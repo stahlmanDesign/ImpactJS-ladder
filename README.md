@@ -15,23 +15,20 @@ Features
 
 Example
 -------
-
-a demo is available here:
-http://impactjs.com/forums/private/ladder-entity
-
+[a demo](http://impactjs.com/forums/private/ladder-entity "Demo")  is available here
 
 Installation
 ------------
 1. copy the light.js into your entities folder
 2. register the class in your main.js:
-```
+```javascript
 .requires(
 	'game.entities.ladder'
 )
 ```
 
 3. add a few variables to your player.js (or other entities that will climb):
-```
+```javascript
 MyGame = ig.Game.extend({
 	canClimb: false,
 	isClimbing: false,
@@ -49,7 +46,7 @@ MyGame = ig.Game.extend({
 ```
 
 4. starting with the Jump n' Run demo, make a few changes to how movement works in update function (in your player.js):
-```
+```javascript
 update: function() {
 	if (ig.input.state('left')) { //move left
 			this.momentumDirection.x = -1;
@@ -100,14 +97,14 @@ update: function() {
 ```
 
 5. add the entity to your game in Weltmeister
-```
+
 	put the rectangle on top of ladders, vines or climable walls on your normal graphics layer.
 	(remove collision tiles under the ladder graphics)
-```
+
 
 6. that's it!
-```
+
 	each ladder can have its own speed by setting the paramter ladderSpeed in Weltmeister.
 	default is 65, which climbs at a normal pace in the Jump n' Run demo.
 	However, if you set a ladderSpeed in your climber entity, that will override all ladders set in WM
-```
+
