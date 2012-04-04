@@ -6,7 +6,7 @@
 
 	@description
     
-    //************ An entity that can use a ladder must declare these variables: ***********
+    // An entity that can use a ladder must declare these variables:
 
     canClimb: false,
     isClimbing: false,
