@@ -105,7 +105,8 @@ update: function() {
 	(remove collision tiles under the ladder graphics)
 ```
 
-6. that's it! 
+6. that's it!
+```
 	each ladder can have its own speed by setting the paramter ladderSpeed in Weltmeister.
 	default is 65, which climbs at a normal pace in the Jump n' Run demo.
 	However, if you set a ladderSpeed in your climber entity, that will override all ladders set in WM
