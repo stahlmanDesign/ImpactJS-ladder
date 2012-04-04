@@ -28,9 +28,7 @@ Installation
 ```
 
 3. add a few variables to your player.js (or other entities that will climb):
-```
-
-MyGame = ig.Game.extend({
+``` MyGame = ig.Game.extend({
 	canClimb: false,
 	isClimbing: false,
 	momentumDirection: {'x':0,'y':0},
@@ -43,13 +41,11 @@ MyGame = ig.Game.extend({
 	this.zIndex = -99;
 	//don't resort if in weltmeister
 	if (!ig.global.wm)ig.game.sortEntitiesDeferred();
-}
+	}
 ```
 
 4. starting with the Jump n' Run demo, make a few changes to how movement works in update function (in your player.js):
-```
-
-update: function() {
+``` update: function() {
 	if (ig.input.state('left')) { //move left
 			this.momentumDirection.x = -1;
 			this.accel.x = -accel;
@@ -95,7 +91,7 @@ update: function() {
 		
 		// prevent fall down ladder if ground touched but ladderReleaseTimer still running from recent jump
 		if (this.standing)this.ladderReleaseTimer.set(0.0);
-}
+		}
 
 ```
 
