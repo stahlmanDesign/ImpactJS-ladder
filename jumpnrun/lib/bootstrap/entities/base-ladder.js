@@ -32,7 +32,6 @@ ig.module(
 			this.parent(x, y, settings);
 			if (settings.id != undefined) { this.spriteId = settings.id; }
 
-			// TODO will fail if weltmeister saves ladders before entityPlayer
 			this.eligibleClimbers = [ig.game.player];	// add entites here. Ladder currently only works for player. Support for other entities could be added in future
 
 			for (var i=0; i< this.eligibleClimbers.length; i++){
@@ -45,9 +44,7 @@ ig.module(
 
 		},
 		update: function() {
-
-
-
+			//
 		},
 		draw: function() {
 
@@ -55,7 +52,7 @@ ig.module(
 			if (ig.editor) {
 				if (this.size.x > this.ladderTexture.width) this.size.x = this.ladderTexture.width;
 				if (this.size.y > this.ladderTexture.height) this.size.y = this.ladderTexture.height;
-				//this.size.x = this.ladderTexture.height; // limit draggable x or y axis in weltmeister to image texture size
+				//this.size.x = this.ladderTexture.width; // limit draggable x (or y) axis in weltmeister to image texture size
 			}
 			this.ladderTexture.drawTile(
 			this.pos.x - this.offset.x - ig.game._rscreen.x, this.pos.y - this.offset.y - ig.game._rscreen.y, 0, this.size.x, this.size.y, 0, this.spriteId);
@@ -138,9 +135,9 @@ ig.module(
 
 						} else if (ig.input.pressed('down')) {
 							entity.momentumDirection.y < 1 ? entity.momentumDirection.y++ : entity.momentumDirection.y = 1;
-
 						}
 					}
+
 					// jump
 					if ((entity.standing						// if standing,
 							|| entity.isClimbing				//    climbing,

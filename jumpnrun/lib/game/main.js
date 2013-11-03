@@ -226,6 +226,9 @@ if( ig.ua.mobile ) {
 	myTouchButtons = new ig.TouchButtonCollection([
 		new ig.TouchButton( 'left', {left: 0, bottom: 0}, 128, 128, buttonImage, 0 ),
 		new ig.TouchButton( 'right', {left: 128, bottom: 0}, 128, 128, buttonImage, 1 ),
+		new ig.TouchButton( 'up', {left: 0, bottom: 256}, 128, 128, buttonImage, 4 ),
+		new ig.TouchButton( 'down', {left: 0, bottom: 128}, 128, 128, buttonImage, 5 ),
+
 		new ig.TouchButton( 'shoot', {right: 128, bottom: 0}, 128, 128, buttonImage, 2 ),
 		new ig.TouchButton( 'jump', {right: 0, bottom: 96}, 128, 128, buttonImage, 3 )
 	]);
