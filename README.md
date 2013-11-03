@@ -19,7 +19,7 @@ Example
 
 Installation
 ------------
-1. copy the bootstrap folder into your lib folder (the ladder is based on Jesse Freeman's "bootrap" plugins for ImpactJS). This foler contains the base-ladder.js entity which contains most of the plugin code.
+1. copy the bootstrap folder into your lib folder (the ladder is based on Jesse Freeman's "bootstrap" plugins for ImpactJS). This foler contains the base-ladder.js entity which contains most of the plugin code.
 2. copy the ladder.js entity into your game/entities folder
 3. in player.js, make sure your player is named as per the v1.23 jumpnrun demo: ig.game.player = this;
 
@@ -31,7 +31,8 @@ Installation
 		// ------------------ begin ladder code ------------------
 		if (this.isConfiguredForClimbing){
 			this.checkForLadder(this);
-			if (this.ladderTouchedTimer.delta() > 0) this.isTouchingLadder = false; // reset in case player leaves ladder. This allows to walk across/atop ladder
+			if (this.ladderTouchedTimer.delta() > 0) this.isTouchingLadder = false;
+			// reset in case player leaves ladder. This allows to walk across/atop ladder
 		}
 		// ------------------  end  ladder code ------------------
 
@@ -40,4 +41,4 @@ Installation
 
 ```
 
-5. add one or more ladder entities to your game in Weltmeister. The ladder is resizeable and contains its own texture.
+5. Add one or more ladder entities to your game in Weltmeister. The ladder is resizeable and contains its own texture.
