@@ -22,7 +22,7 @@ Installation
 1. copy the bootstrap folder into your lib folder (the ladder is based on Jesse Freeman's "bootstrap" plugins for ImpactJS so you can drag the size in Weltmeister). This folder contains the base-ladder.js entity which contains most of the plugin code.
 2. copy the ladder.js entity into your game/entities folder
 3. copy the ladderTexture.png file into your media folder. The plugin should adapt to the size of your texture.
-4. in player.js, make sure your player is named as per the v1.23 jumpnrun demo: ig.game.player = this;
+4. in player.js, make sure you have a reference to your player as per the v1.23 jumpnrun demo: ig.game.player = this;
 
 
 5. add these few lines of code near the end of your player's update function:
@@ -56,7 +56,9 @@ Installation
 Known issues
 ------------
 1. The zIndex is sometimes not right and the player walks behind the ladder. add this right before the ladder code to make player always on top:
-			this.zIndex = 99; // put player on top
-			ig.game.sortEntitiesDeferred();					// assure player is sorted to be on top so fog of war hides other entities. Also required if using ladder if you want player in front of ladder instead of behind
+``` javascript
+	this.zIndex = 99; // put player on top
+	ig.game.sortEntitiesDeferred();	// assure player is sorted to be on top so fog of war hides other entities. Also required if using ladder if you want player in front of ladder instead of behind
+```
 
 2. Ladder size MUST be changed by dragging in WM, or else ladder will be invisible
