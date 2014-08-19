@@ -24,35 +24,31 @@ ig.module(
 		gravityFactor:0,
 		checkAgainst:ig.Entity.TYPE.A,
 		collides:ig.Entity.COLLIDES.NONE,
-		zIndex: 1,				// must be in front of entities that can climb when instantiated, due to the order in which WM saves and loads entities.
+		zIndex: 3,				// must be in front of entities that can climb when instantiated, due to the order in which WM saves and loads entities.
 		eligibleClimbers : [],	// set below in init()
 
 		init: function(x, y, settings) {
-
 			this.parent(x, y, settings);
 			if (settings.id != undefined) { this.spriteId = settings.id; }
-
-			this.eligibleClimbers = [ig.game.player];	// add entites here. Ladder currently only works for player. Support for other entities could be added in future
-
+		},
+		update: function() {
+			this.eligibleClimbers = [ig.game.player];	// add entites here. Must be in update loop if player killed and regenerated in level after ladder init
+			if(!this.eligibleClimbers[0].isConfiguredForClimbing)this.makeEntitiesEligibleClimbers(); // reduce update calls
+		},
+		makeEntitiesEligibleClimbers:function(){
+			if (ig.global.wm) return;
 			for (var i=0; i< this.eligibleClimbers.length; i++){
-				if(!ig.global.wm														// Not in Weltmeister
-					&& !this.eligibleClimbers[i].isConfiguredForClimbing) {				// if more than one ladder in a level, only instantite ladder code once for the entity
+				if(this.eligibleClimbers[i].isConfiguredForClimbing == undefined) {				// if more than one ladder in a level, only instantite ladder code once for the entity
 					this.eligibleClimbers[i].zIndex = this.zIndex + 1;					// zIndex can be changed so entity is in front of ladder AFTER instantiation
 					this.configureEntityInstanceForClimbing(this.eligibleClimbers[i]);	// this allows EntityPlayer[0] to use ladders. Support for other entities could be added in future
 				}
 			}
-
-		},
-		update: function() {
-			//
 		},
 		draw: function() {
-
 			if (!this.ladderTexture) return;
 			if (ig.editor) {
 				if (this.size.x > this.ladderTexture.width) this.size.x = this.ladderTexture.width;
 				if (this.size.y > this.ladderTexture.height) this.size.y = this.ladderTexture.height;
-				//this.size.x = this.ladderTexture.width; // limit draggable x (or y) axis in weltmeister to image texture size
 			}
 			this.ladderTexture.drawTile(
 			this.pos.x - this.offset.x - ig.game._rscreen.x, this.pos.y - this.offset.y - ig.game._rscreen.y, 0, this.size.x, this.size.y, 0, this.spriteId);
@@ -96,7 +92,8 @@ ig.module(
 			entityInstance.momentumDirection = {'x':0,'y':0};		// INTENDED movement on ladder (allows walking past/on top of a ladder and ignoring it unless up or down pressed)
 			entityInstance.ladderReleaseTimer = new ig.Timer(0.0);	// timer which allows to briefly ignore ladder when jumping off or through
 			entityInstance.ladderTouchedTimer = new ig.Timer(0.0);	// if > 0, then check function not fired so not in contact with ladder
-			entityInstance.ladderSpeed = 175; 						// optional. if not set, will use default speed of ladder
+			entityInstance.ladderSpeed = this.ladderSpeed;			// if not set in WM, will use default speed of ladder
+			entityInstance.zIndex = this.zIndex+1;					// TODO sometimes player is behind ladder. a fix may be here
 
 			entityInstance.checkForLadder = function(entity){
 
