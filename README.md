@@ -59,4 +59,4 @@ Known issues
 			this.zIndex = 99; // put player on top
 			ig.game.sortEntitiesDeferred();					// assure player is sorted to be on top so fog of war hides other entities. Also required if using ladder if you want player in front of ladder instead of behind
 
-2. Ladder size MUST be changed by draggin in WM or else ladder will be invisible
+2. Ladder size MUST be changed by dragging in WM, or else ladder will be invisible
