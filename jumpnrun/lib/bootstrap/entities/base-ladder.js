@@ -1,8 +1,8 @@
 ﻿/**
  *  @base-ladder.js
- *  @version: 2.0
+ *  @version: 2.1
  *  @author: Justin Stahlman
- *  @date: 01 Novembre 2013
+ *  @date: 18 August 2014
  *  @uses code from bootstrap entity
  *  @copyright (c) 2013 Jesse Freeman, under The MIT License (see LICENSE)
  *	@used with permission
